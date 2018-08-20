@@ -1,42 +1,34 @@
 //backend business logic
 //construtor fx
 
-function Places(location, landmark, timeYear, notes) {
-  this.location = location;
-  this.landmark = landmark;
-  this.timeYear = timeYear;
-  this.notes = notes;
+function List(tasks) {
+  this.tasks = tasks
 }
-Places.prototype.visitedCities = function() {
-  return this.location;
-} 
+List.prototype.enteredTask = function() {
+  return this.tasks;
+}
 
 // user interface logic
 $(document).ready(function() {
-  $("form#new-place").submit(function(event) {
+  $("form#inputList").submit(function(event) {
     event.preventDefault();
     //Places:
-    var inputtedLocation = $("input#new-location").val();
-    var inputtedLandmark = $("input#new-landmark").val();
-    var inputtedtimeYear = $("input#new-timeYear").val();
-    var inputtedNotes = $("input#new-notes").val();
+    var inputtedToDo = $("input#toDo").val();
 
-    var newPlaces = new Places(inputtedLocation, inputtedLandmark, inputtedtimeYear, inputtedNotes);
+    var newList = new List(inputtedToDo);
+    $("ul#outputLists").append("<li><span class='outputList'>" + newList.enteredTask() + "<input type='checkbox' name='work-transportation' value='bike' id='check'><br>" + "</span></li>");
 
-    $("ul#cities").append("<li><span class='city'>" + newPlaces.visitedCities() + "</span></li>");
-
-    $("input#new-location").val("");
-    $("input#new-landmark").val("");
-    $("input#new-timeYear").val("");
-    $("input#new-notes").val("");
-
-    $(".city").last().click(function() {
-    $("#show-cities-visited").show();
-    $("#show-cities-visited h2").text(newPlaces.location);
-    $(".new-location").text(newPlaces.location);
-    $(".new-landmark").text(newPlaces.landmark);
-    $(".new-timeYear").text(newPlaces.timeYear);
-    $(".new-notes").text(newPlaces.notes);
+    $("input#toDo").val("");
+    $("#remove").click(function() {
+    $("input:checkbox[name=work-transportation]:checked").each(function(){
+      var workTransportationMode = $(this).val();
+      $('#outputLists').toggle(workTransportationMode + "<br>");
+    });
+  });
+    $("#show-lists").last().click(function() {
+    $("#show-lists").show();
+    $("#show-lists h2").text(newList.tasks);
+    $(".new-task").text(newList.tasks);
 
     });
   });
