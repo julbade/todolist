@@ -8,6 +8,13 @@ List.prototype.enteredTask = function() {
   return this.tasks;
 }
 
+// var inputtedTasks = ["tasks"];
+// List.tasks.forEach(function(inputtedTask) {
+//   console.log(inputtedTask.tasks + " Tasks Remaining:");
+//     console.log(tasks);
+//   });
+//   console.log("\n");
+
 // user interface logic
 $(document).ready(function() {
   $("form#inputList").submit(function(event) {
@@ -25,7 +32,7 @@ $(document).ready(function() {
       $('#outputLists').toggle(workTransportationMode + "<br>");
     });
   });
-    $("#show-lists").last().click(function() {
+    $(".outputList").last().click(function() { console.log("Check box if task is done.");
     $("#show-lists").show();
     $("#show-lists h2").text(newList.tasks);
     $(".new-task").text(newList.tasks);
