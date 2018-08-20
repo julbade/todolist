@@ -1,0 +1,17 @@
+#show-cities-visited {
+  display: none;
+}
+
+/*.new-landmark, .new-timeYear, .new-notes {
+  display: none;
+}*/
+
+
+.contact {
+  cursor: pointer;
+  color: #0088cc;
+}
+
+.contact:hover {
+  text-decoration: underline;
+}
