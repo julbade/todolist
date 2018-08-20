@@ -8,13 +8,6 @@ List.prototype.enteredTask = function() {
   return this.tasks;
 }
 
-// var inputtedTasks = ["tasks"];
-// List.tasks.forEach(function(inputtedTask) {
-//   console.log(inputtedTask.tasks + " Tasks Remaining:");
-//     console.log(tasks);
-//   });
-//   console.log("\n");
-
 // user interface logic
 $(document).ready(function() {
   $("form#inputList").submit(function(event) {
@@ -23,13 +16,13 @@ $(document).ready(function() {
     var inputtedToDo = $("input#toDo").val();
 
     var newList = new List(inputtedToDo);
-    $("ul#outputLists").append("<li><span class='outputList'>" + newList.enteredTask() + "<input type='checkbox' name='work-transportation' value='bike' id='check'><br>" + "</span></li>");
+    $("ul#outputLists").append("<li><span class='outputList'>" + newList.enteredTask() + "<input type='checkbox' name='working-list' value= 'checkbox' id='check'><br>" + "</span></li>");
 
     $("input#toDo").val("");
     $("#remove").click(function() {
-    $("input:checkbox[name=work-transportation]:checked").each(function(){
-      var workTransportationMode = $(this).val();
-      $('#outputLists').toggle(workTransportationMode + "<br>");
+    $("input:checkbox[name=working-list]:checked").each(function(){
+      var workingTask = $(this).val();
+      $('#outputLists').hide(workingTask);
     });
   });
     $(".outputList").last().click(function() { console.log("Check box if task is done.");
@@ -40,3 +33,24 @@ $(document).ready(function() {
     });
   });
 });
+
+
+
+// $("#outputLists").click(function ()
+// {
+//     if ($("#check").attr("checked"))
+//     {
+//         $("#remove").hide();
+//     }
+//     else
+//     {
+//         $("#remove").show();
+//     }
+// });
+
+// var inputtedTasks = ["tasks"];
+// List.tasks.forEach(function(inputtedTask) {
+//   console.log(inputtedTask.tasks + " Tasks Remaining:");
+//     console.log(tasks);
+//   });
+//   console.log("\n");
