@@ -21,8 +21,8 @@ $(document).ready(function() {
     $("input#toDo").val("");
     $("#remove").click(function() {
     $("input:checkbox[name=working-list]:checked").each(function(){
-      var workingTask = $(this).val();
-      $('#outputLists').hide(workingTask);
+     $(this).parent().parent().hide();
+
     });
   });
     $(".outputList").last().click(function() { console.log("Check box if task is done.");
@@ -33,24 +33,3 @@ $(document).ready(function() {
     });
   });
 });
-
-
-
-// $("#outputLists").click(function ()
-// {
-//     if ($("#check").attr("checked"))
-//     {
-//         $("#remove").hide();
-//     }
-//     else
-//     {
-//         $("#remove").show();
-//     }
-// });
-
-// var inputtedTasks = ["tasks"];
-// List.tasks.forEach(function(inputtedTask) {
-//   console.log(inputtedTask.tasks + " Tasks Remaining:");
-//     console.log(tasks);
-//   });
-//   console.log("\n");
